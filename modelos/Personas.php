@@ -1,15 +1,17 @@
 <?php 
     class personas{
+        public $id;
         protected $nombre;
         protected $apellido;
         protected $dni;
         protected $fecha_nacimiento;
 
         function __construct(){
-            $this->nombre = '';
-            $this->apellido = '';
-            $this->dni = '';
-            $this->fecha_nacimiento = '';
+                $this->id = ''; 
+                $this->nombre = '';
+                $this->apellido = '';
+                $this->dni = '';
+                $this->fecha_nacimiento = '';
         }
         public function getNombre()
         {
@@ -43,6 +45,16 @@
         public function setFecha_nacimiento($fecha_nacimiento)
         {
                 $this->fecha_nacimiento = $fecha_nacimiento;
+        }
+        public function getId()
+        {
+                return $this->id;
+        }
+
+       
+        public function setId($id)
+        {
+                $this->id = $id;
         }
     }
 ?>

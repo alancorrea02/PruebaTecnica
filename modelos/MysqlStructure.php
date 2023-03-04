@@ -28,7 +28,7 @@
                         $data = null;
                     }
                 }catch(Exception $e){
-                    $data = null;
+                    echo $e;
                 }finally{
                     return $data;
                 }   
