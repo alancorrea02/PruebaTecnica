@@ -41,39 +41,43 @@ class GenericCRUD {
             $this->conexion->setSql("UPDATE personas SET nombre = {$this->campos->getNombre()},
              apellido = {$this->campos->getApellido()}, dni = {$this->campos->getDni()},
               fecha_nacimiento = {$this->campos->getFecha_nacimiento()} WHERE id = {$this->campos->getId()};");
-
             $this->conexion->executeQuery();
+
         }else if($this->table='medicamentos'){
             $this->conexion->setSql("UPDATE medicamentos SET nombre_comercial = 
             {$this->campos->getNombre_comercial()} WHERE id = {$this->campos->getId()};");
-
             $this->conexion->executeQuery();
+
         }else if($this->table == 'persona_medicamento'){
             $this->conexion->setSql("UPDATE persona_medicamento SET observaciones = 
             {$this->campos->getObservaciones()} WHERE id = {$this->campos->getId()};");
-
             $this->conexion->executeQuery();
+
         }else{
             echo "Hola";
         }
     }
-    public function CreateRecord(){
+    public function CreateRecord($idP,$idM){
         if($this->table=='personas'){
             $this->conexion->setSql("INSERT INTO personas (nombre,apellido,dni,fecha_nacimiento) 
             VALUES ('{$this->campos->getNombre()}','{$this->campos->getApellido()}',
             '{$this->campos->getDni()}','{$this->campos->getFecha_nacimiento()}');");
             $this->conexion->executeQuery();
+
         }else if($this->table='medicamentos'){
             $this->conexion->setSql("INSERT INTO medicamentos (nombre_comercial) VALUES ('{$this->campos->getNombre_comercial()}');");
-
             $this->conexion->executeQuery();
+
         }else if($this->table == 'persona_medicamento'){
-            $this->conexion->setSql("UPDATE persona_medicamento SET observaciones = 
-            {$this->campos->getObservaciones()} WHERE id = {$this->campos->getId()};");
+            $this->conexion->setSql("INSERT INTO persona_medicamento (observaciones,persona_id,medicamento_id) VALUES ('{$this->campos->getObservaciones()}',{$idP},{$idM});");
             $this->conexion->executeQuery();
         }else{
             echo "Hola";
         }
+    }
+    public function readSingleItem(){ //ver esta secuencia 
+        $this->conexion->setSql("SELECT ".implode(",",$this->campos)." FROM {$this->table} WHERE id = {$this->campos->getId()};");
+        $respuesta = (array) $this->conexion->executeQuery();
     }
 }
 ?>
