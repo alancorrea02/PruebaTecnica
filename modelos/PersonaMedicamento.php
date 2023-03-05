@@ -1,16 +1,16 @@
 <?php 
-include('Medicamentos.php');
-include('Personas.php');
+//include('Medicamentos.php');
+//include('Personas.php');
     class PersonaMedicamento {
         public $id;
-        public $medicamentos;
-        public $personas;
+        //public $medicamentos;
+        //public $personas;
         public $observaciones;
 
         public function __construct($id){
             $this->id = $id;
-            $this->medicamentos = new Medicamentos();
-            $this->personas = new Personas('','','','','');
+            //$this->medicamentos = new Medicamentos();
+            //$this->personas = new Personas();
             $this->observaciones = '';
         }
         public function getObservaciones()
@@ -28,8 +28,6 @@ include('Personas.php');
         public function setId($id)
         {
                 $this->id = $id;
-
-                return $this;
         }
     }
 ?>
