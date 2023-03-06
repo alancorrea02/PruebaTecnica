@@ -13,11 +13,18 @@ class GenericCRUD {
     public $table;
     public $campos;
     public function __construct($table,$campos){
+        //parent::__construct();
         $this->campos = $campos;
         $this->conexion = new MysqlStructure();
         $this->table= $table;
     }
-    public function readAll(){
+    public function ReadAll(){
+        $this->conexion->setSql("SELECT * FROM {$this->table};");
+        $respuesta = $this->conexion->executeQuery();
+        return $respuesta;
+        
+    }
+    public function readAllFrom(){
         $this->conexion->setSql("SELECT * FROM {$this->table} WHERE id = {$this->campos->getId()};");
         $respuesta = (array) $this->conexion->executeQuery();
         //$respuesta = (array) $respuesta;
@@ -72,7 +79,7 @@ class GenericCRUD {
             $this->conexion->setSql("INSERT INTO persona_medicamento (observaciones,persona_id,medicamento_id) VALUES ('{$this->campos->getObservaciones()}',{$idP},{$idM});");
             $this->conexion->executeQuery();
         }else{
-            echo "Hola";
+            //echo "Hola";
         }
     }
     public function readSingleItem(){ //ver esta secuencia 

@@ -10,7 +10,7 @@
             $this->sql = '';
             try{
                 $this->connection = mysqli_connect($this->host,$this->user,$this->password,$this->dbName);
-                echo "Conexion exitosa";
+                //echo "Conexion exitosa";
             }catch(mysqli_sql_exception $e){
                 header('Location: ../vistas/error.php');
             }
