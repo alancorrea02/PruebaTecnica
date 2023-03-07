@@ -25,10 +25,8 @@
                             <a href="#" class="btn btn-primary btn-lg" id="medicamentosTable">Medicamentos</a>
                             <a href="#" class="btn btn-primary btn-lg" id="prescripcionesTable">Prescripciones médicas</a>
                             <a target="_blank" href="https://www.google.com/search?client=firefox-b-lm&q=personas" class=" btn btn-info btn-lg" id="btnAlumno">Agregar alumno <img src="imagenes/plus-square.svg"></a>
-                           
-                            <a target="_blank" href="https://www.google.com/search?client=firefox-b-lm&q=medicamentos" class=" btn btn-info btn-lg" id="btnMedicamento">Agregar medicamento<img src="imagenes/plus-square.svg"></a>
-                            <a target="_blank" href="https://www.google.com/search?client=firefox-b-lm&q=prescripciones+medicas" class=" btn btn-info btn-lg" id="btnPrescripcion">Agregar prescripcion<img src="imagenes/plus-square.svg"></a>
-
+                            <a target="_blank" href="https://www.google.com/search?client=firefox-b-lm&q=medicamentos" class=" btn btn-info btn-lg" id="btnMedicamento">Agregar medicamento <img src="imagenes/plus-square.svg"></a>
+                            <a target="_blank" href="https://www.google.com/search?client=firefox-b-lm&q=prescripciones+medicas" class=" btn btn-info btn-lg" id="btnPrescripcion">Agregar prescripcion <img src="imagenes/plus-square.svg"></a>
                         </div>
                     </div></nav>
                     <div class="card-body" id="bodyt">
@@ -113,7 +111,7 @@
         $('#tablaMedicamentos').hide();
         $("#tablaPrescripciones").hide();
         $("#PersonasTable").click(function(){
-            $("#tabla").show();
+            $("#tabla").show(900);
             $('#btnMedicamento').hide();
             $('#btnPrescripcion').hide();
             $('#btnAlumno').show();
@@ -156,7 +154,9 @@
                         <td>${contenido[x].apellido}</td>
                         <td>${contenido[x].dni}</td>
                         <td>${contenido[x].fecha_nacimiento}</td>
-                        <td><a href=vistas/editar.php><button type="button" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Editar"><img src="imagenes/pencil-square.svg"></button></a> <a class="btn btn-danger" href="#"><img src="imagenes/trash3-fill.svg"></a></td>
+                        <td><a target="_blank" href=vistas/editar.php?id=${contenido[x].id}?nombre=2><button type="button" class="btn btn-success" 
+                        data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Editar"><img src="imagenes/pencil-square.svg"></button>
+                        </a> <a class="btn btn-danger" href="#"><img src="imagenes/trash3-fill.svg"></a></td>
                 </tr>
                     `;
                 }
