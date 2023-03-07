@@ -19,12 +19,18 @@
         <div class="row">
             <div class="col-xl-12 col-md-12 col-ls-12 col-lg-12">
                 <div class="card border-0" style="background: rgba(255,255,255,0.1); box-shadow: 0 1px 15px rgba(255,255,255,.1);">
-                    <div class="card-title">
+                    <nav><div class="card-title">
                         <div class="btn-group">
                             <a href="#" class="btn btn-primary btn-lg" aria-current="page" id="PersonasTable">Personas</a>
                             <a href="#" class="btn btn-primary btn-lg" id="medicamentosTable">Medicamentos</a>
                             <a href="#" class="btn btn-primary btn-lg" id="prescripcionesTable">Prescripciones médicas</a>
+                            <a target="_blank" href="https://www.google.com/search?client=firefox-b-lm&q=personas" class=" btn btn-info btn-lg" id="btnAlumno">Agregar alumno <img src="imagenes/plus-square.svg"></a>
+                           
+                            <a target="_blank" href="https://www.google.com/search?client=firefox-b-lm&q=medicamentos" class=" btn btn-info btn-lg" id="btnMedicamento">Agregar medicamento<img src="imagenes/plus-square.svg"></a>
+                            <a target="_blank" href="https://www.google.com/search?client=firefox-b-lm&q=prescripciones+medicas" class=" btn btn-info btn-lg" id="btnPrescripcion">Agregar prescripcion<img src="imagenes/plus-square.svg"></a>
+
                         </div>
+                    </div></nav>
                     <div class="card-body" id="bodyt">
                     <table class="table table-responsive table-light table-border table-hover text-center" id = "tabla">
                         <thead>
@@ -94,36 +100,43 @@
         
     
 </script>
+<script> //muestra el mensaje del tooltip
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+</script>
 <script type= "text/javascript">
     $("#document").ready(function(){
         CargarTabla();
-
+        $('#btnAlumno').show();
+        $('#btnMedicamento').hide();
+        $('#btnPrescripcion').hide();
         $('#tablaMedicamentos').hide();
         $("#tablaPrescripciones").hide();
         $("#PersonasTable").click(function(){
-            /*if(v==0){
-                v = 1;
-                $("#tabla").hide();
-            }else{
-                v = 0;
-                $("#tabla").show();
-            }*/
             $("#tabla").show();
+            $('#btnMedicamento').hide();
+            $('#btnPrescripcion').hide();
+            $('#btnAlumno').show();
+
             $('#tablaMedicamentos').hide();
             $("#tablaPrescripciones").hide();
-
         });
         $("#medicamentosTable").click(function(){
+
+            $('#btnAlumno').hide();
+            $('#btnMedicamento').show();
+            $('#btnPrescripcion').hide();
             $("#tablaPrescripciones").hide();
             $("#tabla").hide();
             $("#tablaMedicamentos").show();
         });
         $("#prescripcionesTable").click(function(){
             $("#tabla").hide();
+            $('#btnAlumno').hide();
+            $('#btnMedicamento').hide();
+            $('#btnPrescripcion').show();
             $("#tablaMedicamentos").hide();
             $("#tablaPrescripciones").show();
-
-
         });
         function CargarTabla(){
            $.ajax({
@@ -143,12 +156,13 @@
                         <td>${contenido[x].apellido}</td>
                         <td>${contenido[x].dni}</td>
                         <td>${contenido[x].fecha_nacimiento}</td>
-                        <td><a class="btn btn-success"><img src="imagenes/pencil-square.svg"></a> <a class="btn btn-danger"href="#"><img src="imagenes/trash3-fill.svg"></a></td>
+                        <td><a href=vistas/editar.php><button type="button" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Editar"><img src="imagenes/pencil-square.svg"></button></a> <a class="btn btn-danger" href="#"><img src="imagenes/trash3-fill.svg"></a></td>
                 </tr>
                     `;
                 }
                 $("#personas").html(template);
             }
+            
            }); 
         }
     });
