@@ -18,7 +18,7 @@
     <div class="container my-5">
         <div class="row">
             <div class="col-xl-12 col-md-12 col-ls-12 col-lg-12">
-                <div class="card border-0" style="background: rgba(255,255,255,0.1); box-shadow: 0 5px 15px rgba(255,255,255,.1);">
+                <div class="card border-0" style="background: rgba(255,255,255,0.1); box-shadow: 0 1px 15px rgba(255,255,255,.1);">
                     <div class="card-title">
                         <div class="btn-group">
                             <a href="#" class="btn btn-primary btn-lg" aria-current="page" id="PersonasTable">Personas</a>
