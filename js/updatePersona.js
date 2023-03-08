@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    var idPersona; 
     $('#updatePersona').submit(function(e){
         e.preventDefault();
         //var data = new FormData($('#updatePersona')[0]);
