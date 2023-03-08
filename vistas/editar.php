@@ -1,7 +1,8 @@
 <?php
 $id = $_GET['id'];
-$_SESSION['id'] = $id;
-include('../controladores/updatePersona.php');  
+$_SESSION['idPersona'] = $id;
+//include('../controladores/updatePersona.php');  
+echo $_SESSION['idPersona'];
   ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +19,7 @@ include('../controladores/updatePersona.php');
 <div class="container">
     <div class="row ">
         <div class="col-xl-12 col-sm-12 col-ls-12 col-md-12 text-dark text-center m-auto d-flex justify-content-center align-items-center my-5">
-            <form action="">
+            <form action="" id="updatePersona">
                 <div class="card border-0">
                     <div class="card-title h2 ">Ingresar datos</div>
                     <div class="card-body">
@@ -60,8 +61,8 @@ include('../controladores/updatePersona.php');
     
 </body>
 <!--Scripts de Javascript-->
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="js/jquery-3.6.3.min.js.js"></script>
+<script src="../bootstrap/js/bootstrap.min.js"></script>
+<script src="../js/jquery-3.6.3.min.js.js"></script>
 <script type="text/javascript"></script>
 <script src="../js/updatePersona.js"></script>
 </html>
