@@ -45,12 +45,13 @@ class GenericCRUD {
     }
     public function UpdateAll(){
         if($this->table=='personas'){
-            $this->conexion->setSql("UPDATE personas SET nombre = {$this->campos->getNombre()},
-             apellido = {$this->campos->getApellido()}, dni = {$this->campos->getDni()},
-              fecha_nacimiento = {$this->campos->getFecha_nacimiento()} WHERE id = {$this->campos->getId()};");
-            $this->conexion->executeQuery();
+            $this->conexion->setSql("UPDATE personas SET nombre = '{$this->campos->getNombre()}',
+             apellido = '{$this->campos->getApellido()}', dni = '{$this->campos->getDni()}',
+              fecha_nacimiento = '{$this->campos->getFecha_nacimiento()}' WHERE id = {$this->campos->getId()};");
+            $variable = $this->conexion->executeQuery();
+            return $variable;
 
-        }else if($this->table='medicamentos'){
+        }else if($this->table=='medicamentos'){
             $this->conexion->setSql("UPDATE medicamentos SET nombre_comercial = 
             {$this->campos->getNombre_comercial()} WHERE id = {$this->campos->getId()};");
             $this->conexion->executeQuery();

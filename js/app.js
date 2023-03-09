@@ -1,20 +1,32 @@
 $(document).ready(function(){
     //Declaro variables
+    //c//onsole.log()
+    $("#insertPersona").attr("value","juan");
+        console.log($("#insertPersona").attr("value"));
     var idPersona; 
     CargarTabla();
     $(document).on('click','#btnMod',function(e){
-        //print_r(e);
-        $("#updatePersona").show();
+        
+
         let template = '';
+        $("#updatePersona").show(400);
+        template = `<input class="btn btn-lg btn-success " type="submit" name="envio" value="enviar">`;
+        $('#btnAccion').html(template);
+        $("#updatePersona")[0].reset();
+        template = '';
         template += `Update de Persona`;
         $("#tituloInsert").html(template);
         template = '';
         idPersona = $(this).val();
-        console.log("id persona: "+idPersona);
+        //console.log("id persona: "+idPersona);
     });
+
     //Control de Ventanas visibles
+    $('#ok').hide();
     $('#busqueda').hide();
     $("#updatePersona").hide();
+    $("#insertPersona").hide();
+
     $('#btnAlumno').show();
     $('#btnMedicamento').hide();
     $('#btnPrescripcion').hide();
@@ -23,6 +35,7 @@ $(document).ready(function(){
     //$('#busqueda').hide();
     $("#PersonasTable").click(function(){
         $("#updatePersona").hide();
+        $('#ok').hide();
         $('#busqueda').hide();
         $("#tabla").show(400);
         $('#btnMedicamento').hide();
@@ -32,9 +45,10 @@ $(document).ready(function(){
         $("#tablaPrescripciones").hide();
     });
     $("#btnMod").click(function(){
-        console.log("ff");
+        //console.log("ff");
     });
     $("#medicamentosTable").click(function(){
+        $('#ok').hide();
         $("#updatePersona").hide();
         $('#busqueda').hide();
         $('#btnAlumno').hide();
@@ -45,6 +59,7 @@ $(document).ready(function(){
         $("#tablaMedicamentos").show(400);
     });
     $("#prescripcionesTable").click(function(){
+        $('#ok').hide();
         $('#busqueda').show(400);
         $("#updatePersona").hide();
         $("#tabla").hide();
@@ -55,18 +70,20 @@ $(document).ready(function(){
         $("#tablaPrescripciones").show();
     });
     //Funciones de JS Para Index
+    $(document).on('click','#btnDel',function(e){
+        e.preventDefault();
+        $.ajax({
+
+        });
+    });
     function CargarTabla(){
        $.ajax({
         url: 'controladores/controlTablas.php',
         type: 'GET',
         success: function(response){
-            console.log(response);
-
             let contenido = JSON.parse(response);
-            console.log(contenido);
             template = '';
             for(x in contenido){
-            
                 template += `
                 <tr>
                     <td>${contenido[x].id}</td>
@@ -74,7 +91,7 @@ $(document).ready(function(){
                     <td>${contenido[x].apellido}</td>
                     <td>${contenido[x].dni}</td>
                     <td>${contenido[x].fecha_nacimiento}</td>
-                    <td><button id="btnMod" value=${contenido[x].id} type="button" style="margin: 10px;" class="btn btn-success"><img src="imagenes/pencil-square.svg"></button><a class="btn btn-danger" href="#"><img src="imagenes/trash3-fill.svg"></a></td>
+                    <td><button id="btnMod" value=${contenido[x].id} type="button" style="margin: 10px;" class="btn btn-success"><img src="imagenes/pencil-square.svg"></button><button class="btn btn-danger" id="btnDel" value=${contenido[x].id}><img src="imagenes/trash3-fill.svg"></button></td>
             </tr>
                 `;
             }
@@ -83,26 +100,30 @@ $(document).ready(function(){
        }); 
     }
     $('#updatePersona').submit(function(e){
-        e.preventDefault();   
+        e.preventDefault();
+        let datar = $('#updatePersona').serialize();
+        datar = datar+'&id='+idPersona;  
         $.ajax({
-            url: '../controladores/updatePersona.php',
+            url: 'controladores/updatePersona.php',
             type: 'post',
-            data: $('#updatePersona').serialize(),
+            data: datar,
             beforeSend: function(){
-                console.log("Enviado");
             },
             success: function(response){
-                console.log(response);
-
                 let contenido = JSON.parse(response);
-                console.log(contenido);
+                let template = '';
+                if(contenido.ok=='error'){
+                    template = `<div class="alert alert-danger">Error, no se pudo realizar la operación.</div>`;
+                }
+                else if(contenido.ok=='ok'){
+                    template = `<div class="alert alert-success">La operación fué exitosa.</div>`;
+                }
+                $('#ok').html(template);
+                $('#ok').show();
+                CargarTabla();  
             },
-            error: function(response){
-                console.log("error function")
-                console.log (response);
-
-                //let contenido = JSON.parse(response);
-                //console.log(contenido);
+            error: function(){
+                console.log("error function");
             } 
         });
 

@@ -28,12 +28,13 @@
                         $data = null;
                     }
                 }catch(Exception $e){
-                    echo $e;
+                    $data = null;
                 }finally{
                     return $data;
                 }   
             }else{
-                return null;
+                $data=null;
+                return $data ;
             }
         }
         public function getSingleResult(){
