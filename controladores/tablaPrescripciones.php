@@ -1,8 +1,8 @@
 <?php
     include('../modelos/genericCrud.php');
-    $personas = new personas();
-    $crud = new GenericCRUD('personas','');
-    $respuesta = (array) $crud->ReadAll();
+    $prescripciones = new PersonaMedicamento();
+    $crud = new GenericCRUD('persona_medicamento','');
+    $respuesta = (array) $crud->JoinPrescripciones();
     $json = array();
     $json = $respuesta;
     $jsonString = json_encode($json);

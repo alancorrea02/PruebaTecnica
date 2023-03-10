@@ -1,10 +1,12 @@
 body{
     background-size: cover;
     background-color: #4158D0;
-    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    background-image: linear-gradient(123deg, #1f34a0 0%, #e24bd8 46%, #e6ac40 100%);
     background-repeat: no-repeat;
     background-attachment: fixed;
     height: 100vh;
-    
 }
-
+#primaryCard{
+    background: rgba(255,255,255,0.1); 
+    box-shadow: 0 1px 15px rgba(255,255,255,.1);
+}

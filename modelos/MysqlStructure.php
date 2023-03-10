@@ -15,12 +15,26 @@
                 header('Location: ../vistas/error.php');
             }
         }
+        public function executeSoloQuery(){
+            $data = array();
+            if(is_string($this->sql) and !empty($this->sql)){
+                try{
+                    $result = $this->connection->query($this->sql);
+                    $result = 'ok';
+                }catch(Exception $e){
+                   $result=null;
+                }finally{
+                    return $result;
+                }
+            }
+        }
         public function executeQuery(){
             $data = array();
             if(is_string($this->sql) and !empty($this->sql)){
                 try{
                     $result = $this->connection->query($this->sql);
                     if(mysqli_num_rows($result) > 0){
+                        //array_push($data,'exito');
                         while($row = mysqli_fetch_assoc($result)){
                             array_push($data,$row);
                         }
@@ -35,6 +49,7 @@
             }else{
                 $data=null;
                 return $data ;
+
             }
         }
         public function getSingleResult(){
