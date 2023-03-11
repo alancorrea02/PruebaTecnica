@@ -23,7 +23,7 @@ class GenericCRUD {
     }
     public function readAllFrom(){
         $this->conexion->setSql("SELECT * FROM {$this->table} WHERE id = {$this->campos->getId()};");
-        $respuesta = (array) $this->conexion->executeSoloQuery();
+        $respuesta = $this->conexion->executeQuery();
         return $respuesta;
         
     }
@@ -76,6 +76,12 @@ class GenericCRUD {
     public function JoinPrescripciones(){
         $this->conexion->setSql("SELECT pm.id,pm.persona_id,pm.medicamento_id,pm.observaciones,pm.created_at,md.nombre_comercial,pr.nombre,pr.apellido,pr.dni FROM persona_medicamento pm 
         INNER JOIN personas pr ON pm.persona_id = pr.id INNER JOIN medicamentos md ON md.id = pm.medicamento_id;");
+        $variable=$this->conexion->executeQuery();
+        return $variable;
+    }
+    public function JoinPrescripcionesFrom(){
+        $this->conexion->setSql("SELECT pm.id,pm.persona_id,pm.medicamento_id,pm.observaciones,pm.created_at,md.nombre_comercial,pr.nombre,pr.apellido,pr.dni FROM persona_medicamento pm 
+        INNER JOIN personas pr ON pm.persona_id = pr.id INNER JOIN medicamentos md ON md.id = pm.medicamento_id WHERE pm.id = {$this->campos->getId()};");
         $variable=$this->conexion->executeQuery();
         return $variable;
     }

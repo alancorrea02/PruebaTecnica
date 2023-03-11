@@ -22,6 +22,8 @@ $("#tablaPrescripciones").hide();
 //---------------Clicks en ventanas botones para cambiar ventanas---------------
 
 $("#PersonasTable").click(function(){
+    $("#search").val('');
+
     $("#updatePrescripciones").hide();
     $("#updateMedicamento").hide();
     $("#updatePersona").hide();
@@ -35,6 +37,8 @@ $("#PersonasTable").click(function(){
     $("#tablaPrescripciones").hide();
 });
 $("#medicamentosTable").click(function(){
+    $("#search").val('');
+
     $("#updatePrescripciones").hide();
     CargarTablaMedicamentos();
     $("#updateMedicamento").hide();
@@ -49,6 +53,8 @@ $("#medicamentosTable").click(function(){
     $("#tablaMedicamentos").show(400);
 });
 $("#prescripcionesTable").click(function(){
+    $("#search").val('');
+
     $("#updatePrescripciones").hide();
     CargarTablaPrescripciones();
     $("#updateMedicamento").hide();
@@ -89,6 +95,8 @@ $(document).on('click','#btnMod1',function(e){
     $('#ok1').hide();
 });
 $(document).on('click','#btnMod2',function(e){
+    let element = $(this)[0];
+    console.log(element);
     $("#selectNombre").show();
     $("#selectMedicamento").show();
     $("#updatePrescripciones").attr("value","updatePrescripciones");
@@ -134,7 +142,6 @@ $(document).on('click','#btnPrescripcion',function(e){
     $('#ok2').hide();
     CargaSelect();
 });
-
     $(document).on('click','#btnDel',function(e){ //clicks en btnDel estos btnDel son botones de eliminar, están numerados---------------
         $("#updatePersona").hide(400);
         $("#updatePersona")[0].reset();
@@ -315,7 +322,6 @@ function CargaSelect(){
                 `;
             }
             $("#selectNombre").html(template);
-
         }
     });
     $.ajax({

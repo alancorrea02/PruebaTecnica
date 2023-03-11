@@ -208,6 +208,7 @@
 </script>
 <script src="js/app.js" ></script>
 <script src="js/buscador.js" ></script>
+<script src="js/completarInputs.js" ></script>
 
 </html>
 
