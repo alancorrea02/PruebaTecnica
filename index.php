@@ -74,8 +74,8 @@
                         </div>
                         <div id="busqueda">
                             <form  class="text-dark text-center m-auto d-flex justify-content-left align-items-center mb-2 mt-2" action="" >
-                                    <input  type="text" style="height:35px; margin-right: 10px;">
-                                    <input class="btn btn-success mb-1" type="submit" value="Búsqueda">
+                                    <input id="search" type="text" style="height:35px; margin-right: 10px;">
+                                    <input class="btn btn-success mb-1" type="submit">
                             </form>
                         </div>    
                         <table class="table table-responsive table-light table-border table-hover text-center" id = "tabla">
@@ -204,5 +204,8 @@
   const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 </script>
 <script src="js/app.js" ></script>
+<script src="js/showData.js" ></script>
+<script src="js/buscador.js" ></script>
+
 </html>
 
