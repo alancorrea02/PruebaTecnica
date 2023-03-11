@@ -17,11 +17,11 @@
 <body>
     <div class="container my-5">
         <div class="row">
-            <div class="col-xl-12 col-md-6 col-ls-6 col-lg-6 text-center m-auto d-flex justify-content-center align-items-center">
-                <div  class="card border-0" id="primaryCard" style="width:max-content;box-sizing:border-box">
+            <div id ="contenedor"class="col-12 text-center justify-content-center align-items-center">
+                <div  class="card border-0 p-4" id="primaryCard" style="width:max-content;box-sizing:border-box">
                     <nav>
                         <div class="card-title">
-                            <div class="btn-group">
+                            <div class="btn-group col-12">
                                 <a href="#" class="btn btn-primary btn-lg" aria-current="page" id="PersonasTable">Personas</a>
                                 <a href="#" class="btn btn-primary btn-lg" id="medicamentosTable">Medicamentos</a>
                                 <a href="#" class="btn btn-primary btn-lg" id="prescripcionesTable">Prescripciones médicas</a>
@@ -31,9 +31,8 @@
                             </div>
                         </div>
                     </nav>
-                    <div class="card-body" id="bodyt">
+                    <div class="card-body" id="bodyt" >
                         <div class="m-10 col-xl-12 col-sm-12 col-ls-12 col-md-12 text-dark text-center m-auto d-flex justify-content-center align-items-center my-3">
-                        
                             <form action="" id="updatePersona">
                                 <div class="card border-0">
                                     <div id="tituloInsert" class="card-title h2 text-center text-dark"></div>
@@ -73,9 +72,13 @@
                             </form>
                         </div>
                         <div id="busqueda">
-                            <form  class="text-dark text-center m-auto d-flex justify-content-left align-items-center mb-2 mt-2" action="" >
-                                    <input id="search" type="text" style="height:35px; margin-right: 10px;">
-                                    <input class="btn btn-success mb-1" type="submit">
+                            <form  class="text-dark text-center m-auto d-flex justify-content-left align-items-center" action="" >
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text border-success bg-success text-dark" id="">Búsqueda</span>
+                                    </div>
+                                    <input type="text" class="form-control" id="search" name="search" placeholder="filtrar por dni o medicamento">
+                                </div> 
                             </form>
                         </div>    
                         <table class="table table-responsive table-light table-border table-hover text-center" id = "tabla">
@@ -103,19 +106,19 @@
                                                     <label class="h5 text-center"for="nombre">Nombre comercial</label><br>
                                                     <input type="text" name="nombre_comercial" id="nombre_comercial" required>
                                                 </div>
-                                            <div class="row">
-                                                <div class=" col-xl-12 col-ls-12 col-sm-12 justify-content-center text-center align-items-center my-2">
-                                                    <span id="ok1"></span>
+                                                <div class="row">
+                                                    <div class=" col-xl-12 col-ls-12 col-sm-12 justify-content-center text-center align-items-center my-2">
+                                                        <span id="ok1"></span>
+                                                    </div>
                                                 </div>
+                                                <div class="row">
+                                                    <div class="col-12 justify-content-center text-center align-items-center" id="btnAccion">
+                                                        <input class="btn btn-lg btn-success" type="submit" name="envio" value="enviar">
+                                                    </div>
+                                                </div>      
                                             </div>
-                                            <div class="row">
-                                                <div class="col-12 justify-content-center text-center align-items-center" id="btnAccion">
-                                                    <input class="btn btn-lg btn-success" type="submit" name="envio" value="enviar">
-                                                </div>
-                                            </div>      
                                         </div>
                                     </div>
-                                </div>
                                 
                             </form>
                         </div>
@@ -137,16 +140,16 @@
                                         <div id="tituloInsert2" class="card-title h2 text-center text-dark"></div>
                                         <div class="card-body">
                                             <div class="row">
-                                            <div class="col-xl-12 col-ls-4 col-sm-12 text-center justify-content-center align-items-center  ">
-                                                    <label class="h5 text-center"for="nombre">Paciente</label><br>
-                                                    <select class="  form-select" name="nombre" id="selectNombre">
-                                                                
-                                                    </select><br>
-                                                    <label class="h5 text-center"for="medicamento">Medicamento</label><br>
+                                                <div class="col-xl-12 col-ls-4 col-sm-12 text-center justify-content-center align-items-center  ">
+                                                        <label class="h5 text-center"for="nombre">Paciente</label><br>
+                                                        <select class="  form-select" name="nombre" id="selectNombre">
+                                                                    
+                                                        </select><br>
+                                                        <label class="h5 text-center"for="medicamento">Medicamento</label><br>
 
-                                                    <select class="form-select mt-2" name="medicamento" id="selectMedicamento">
-                                                                
-                                                    </select>
+                                                        <select class="form-select mt-2" name="medicamento" id="selectMedicamento">
+                                                                    
+                                                        </select>
                                                 </div>
                                                 <div class="col-xl-12 col-ls-4 col-sm-12 text-center justify-content-center align-items-center  ">
                                                     <label class="h5 text-center mt-4"for="observaciones">Observaciones</label><br>
@@ -166,10 +169,10 @@
                                             </div>      
                                         </div>
                                     </div>
-                                </div>
+                                
                             </form>
-                        </div>  
-                        <table class="table table-responsive table table-light table-border table-hover text-center" id = "tablaPrescripciones">
+                        </div>
+                        <table class="table table-responsive table table-light table-border table-hover text-center col-12" id = "tablaPrescripciones"">
                             <thead>
                                 <tr class="table-dark">
                                 <td>id</td>
@@ -186,13 +189,13 @@
     
                             </tbody>
                         </table>
-                    </div>
-                    </div>
+                    </div>  
                 </div>
             </div>
-                    
         </div>
     </div>
+                    
+       
 </body>
 
 <!--Scripts de Javascript-->
@@ -204,7 +207,6 @@
   const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 </script>
 <script src="js/app.js" ></script>
-<script src="js/showData.js" ></script>
 <script src="js/buscador.js" ></script>
 
 </html>

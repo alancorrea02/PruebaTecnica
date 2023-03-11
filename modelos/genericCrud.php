@@ -8,15 +8,10 @@ include('Medicamentos.php');
 include('PersonaMedicamento.php');
 require('MysqlStructure.php');
 class GenericCRUD {
-    public $persona;
-    public $medicamento;
     public $conexion;
     public $table;
     public $campos;
     public function __construct($table,$campos){
-        //parent::__construct();
-        $this->medicamento = new Medicamentos();
-        $this->persona = new personas();
         $this->campos = $campos;
         $this->conexion = new MysqlStructure();
         $this->table= $table;
@@ -28,25 +23,15 @@ class GenericCRUD {
     }
     public function readAllFrom(){
         $this->conexion->setSql("SELECT * FROM {$this->table} WHERE id = {$this->campos->getId()};");
-        $respuesta = (array) $this->conexion->executeQuery();
-        //$respuesta = (array) $respuesta;
-        echo '<pre>' .PHP_EOL;
-        print_r($respuesta);
-        echo "</pre>" . PHP_EOL; 
-        foreach ($respuesta as $value){
-            echo $value['id'];
-        }
+        $respuesta = (array) $this->conexion->executeSoloQuery();
+        return $respuesta;
+        
     }
     public function deleteAll(){
         $this->conexion->setSql("DELETE FROM {$this->table} WHERE id = {$this->campos->getId()};");
         $respuesta = $this->conexion->executeSoloQuery();
         return $respuesta;
     }   
-    public function deleteFrom(){
-        $this->conexion->setSql("SELECT ".implode(",",$this->campos)." FROM {$this->table} WHERE id = {$this->persona->getId()};");
-        echo $this->conexion->getSql();
-    }
-
     public function UpdateAll($p,$m){
         if($this->table=='personas'){
             $this->conexion->setSql("UPDATE personas SET nombre = '{$this->campos->getNombre()}',
@@ -54,7 +39,6 @@ class GenericCRUD {
               fecha_nacimiento = '{$this->campos->getFecha_nacimiento()}' WHERE id = {$this->campos->getId()};");
             $variable = $this->conexion->executeQuery();
             return $variable;
-
         }else if($this->table=='medicamentos'){
             $this->conexion->setSql("UPDATE medicamentos SET nombre_comercial = 
             '{$this->campos->getNombre_comercial()}' WHERE id = {$this->campos->getId()};");
@@ -87,8 +71,6 @@ class GenericCRUD {
             //$this->conexion->executeSoloQuery();
             $variable = $this->conexion->executeSoloQuery();
             return $variable;    
-        }else{
-
         }
     }
     public function JoinPrescripciones(){
@@ -97,9 +79,11 @@ class GenericCRUD {
         $variable=$this->conexion->executeQuery();
         return $variable;
     }
-    public function readSingleItem(){ //ver esta secuencia 
-        $this->conexion->setSql("SELECT ".implode(",",$this->campos)." FROM {$this->table} WHERE id = {$this->campos->getId()};");
-        $respuesta = (array) $this->conexion->executeQuery();
+    public function JoinPrescripcionesWhere ($clave){
+        $this->conexion->setSql("SELECT pm.id,pm.persona_id,pm.medicamento_id,pm.observaciones,pm.created_at,md.nombre_comercial,pr.nombre,pr.apellido,pr.dni FROM persona_medicamento pm 
+        INNER JOIN personas pr ON pm.persona_id = pr.id  INNER JOIN medicamentos md ON md.id = pm.medicamento_id WHERE ((pr.dni LIKE '%{$clave}%') OR (md.nombre_comercial LIKE '%{$clave}%'));");
+        $variable = $this->conexion->executeQuery();
+        return $variable;
     }
 }
 ?>
