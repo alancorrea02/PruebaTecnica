@@ -5,7 +5,11 @@ $(document).ready(function(){
 
 //---------------Funciones de JS Para Index---------------
 //---------------Clicks---------------
-    
+mayusculas();
+function mayusculas (){
+    $('input').val().toUpperCase();
+}
+//
 CargarTabla();
 $('#ok').hide();
 $('#busqueda').hide();

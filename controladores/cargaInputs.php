@@ -3,7 +3,6 @@
 
     if (isset($_POST['operation'])){
         $json = array();
-        
         $operacion = $_POST['operation'];
         //echo $_POST['id'];
         if($operacion=='persona'){
@@ -51,4 +50,6 @@
         $jsonString = json_encode($json);
         echo $jsonString;       
     }
+    $desconexion = new MysqlStructure();
+    $desconexion ->closeConnection();
 ?>

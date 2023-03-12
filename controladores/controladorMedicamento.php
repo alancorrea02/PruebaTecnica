@@ -60,4 +60,6 @@ if (isset($_POST['operation'])){
 }
 $jsonString = json_encode($json);
 echo $jsonString;
+$desconexion = new MysqlStructure();
+$desconexion ->closeConnection();
 ?>
