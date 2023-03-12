@@ -10,9 +10,12 @@
         else if ($_POST['dato']!=''){
             $respuesta = $conexion->JoinPrescripcionesWhere($_POST['dato']);  
         }
-        $json = array();
-        $json = $respuesta;
-        $jsonString = json_encode($json);
-        echo $jsonString; 
+        
     }
+    $json = array();
+    $json = $respuesta;
+    $jsonString = json_encode($json);
+    echo $jsonString; 
+    $desconexion = new MysqlStructure();
+    $desconexion ->closeConnection();
 ?>

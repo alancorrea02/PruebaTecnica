@@ -1,10 +1,9 @@
 <?php
     include ('../modelos/genericCrud.php');
+    $json = array();
 
     if (isset($_POST['operation'])){
-        $json = array();
         $operacion = $_POST['operation'];
-        //echo $_POST['id'];
         if($operacion=='persona'){
             if(isset($_POST['id'])){
                 $persona = new personas();
@@ -47,9 +46,12 @@
                 $json['error'] = 'error';
             }
         }
-        $jsonString = json_encode($json);
-        echo $jsonString;       
+             
+    }else{
+        $json['error'] = 'error';
     }
+    $jsonString = json_encode($json);
+    echo $jsonString;  
     $desconexion = new MysqlStructure();
     $desconexion ->closeConnection();
 ?>

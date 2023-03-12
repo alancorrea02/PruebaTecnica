@@ -1,5 +1,6 @@
 <?php
 include('../modelos/genericCrud.php');
+$json = array();
 
 if (isset($_POST['operation'])){
     $operacion = $_POST['operation'];
@@ -10,14 +11,11 @@ if (isset($_POST['operation'])){
             $conexion = new GenericCRUD('persona_medicamento',$prescripcion);
             $cone = $conexion->CreateRecord($_POST['nombre'],$_POST['medicamento']);
             if(is_null($cone)){
-                    $json = array();
                     $json['ok'] = 'error';
             }else if(!is_null($cone)){
-                    $json = array();
                     $json['ok'] = 'ok';
                 }  
         }else{
-            $json = array();
             $json['ok'] = 'error';   
         }
     }else if($operacion=="update"){
@@ -30,14 +28,11 @@ if (isset($_POST['operation'])){
             $m = $_POST['medicamento'];
             $cone = $conexion->UpdateAll($p,$m);
             if(is_null($cone)){
-                $json = array();
                 $json['ok'] = $cone;
             }else if(!is_null($cone)){
-                $json = array();
                 $json['ok'] = 'ok';
             }  
         }else{
-            $json = array();
             $json['ok'] = 'error';   
         }
     }else if($operacion=='delete'){
@@ -47,22 +42,20 @@ if (isset($_POST['operation'])){
             $conexion = new GenericCRUD('persona_medicamento',$prescripcion);
             $cone = $conexion->deleteAll();
             if(is_null($cone)){
-                $json = array();
                 $json['ok'] = $cone;
             }else if(!is_null($cone)){
-                $json = array();
                 $json['ok'] = 'ok';
             }  
     }else{
-        $json = array();
         $json['ok'] = 'error';   
     }
 }else{
-    $json = array();
     $json['ok'] = 'error';   
 }
-$jsonString = json_encode($json);
-    echo $jsonString;
-}
 
+}
+$jsonString = json_encode($json);
+echo $jsonString;
+$desconexion = new MysqlStructure();
+$desconexion ->closeConnection();
 ?>

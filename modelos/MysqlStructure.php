@@ -52,18 +52,6 @@
 
             }
         }
-        public function getSingleResult(){
-            if(is_string($this->sql) and !empty($this->sql)){
-                $result = mysqli_query($this->connection,$this->sql);
-                if(mysqli_num_rows($result) > 0){
-                    return mysqli_fetch_assoc($result);
-                }else{
-                    return null;
-                }
-            }else{
-                return null;
-            }
-        }
         public function closeConnection(){
             mysqli_close($this->connection);
         }

@@ -1,9 +1,4 @@
-<?php 
-//include("modelos/MysqlStructure.php");
-//include('modelos/Personas.php');
-//include('modelos/genericCrud.php');
-//include('controladores/controlTablas.php');
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,6 +32,9 @@
                                 <div class="card border-0">
                                     <div id="tituloInsert" class="card-title h2 text-center text-dark"></div>
                                     <div class="card-body">
+
+                                        <!--Formulario de ingreso persona-->
+
                                         <div class="row">
                                             <div class="col-xl-4 col-ls-2 col-sm-2 ">
                                                 <label class="h5"for="nombre">Nombre</label><br>
@@ -71,6 +69,9 @@
                                 </div>
                             </form>
                         </div>
+
+                        <!--Buscador o filtro de prescripciones-->
+
                         <div id="busqueda">
                             <form  class="text-dark text-center m-auto d-flex justify-content-left align-items-center" action="" >
                                 <div class="input-group mb-3">
@@ -80,7 +81,9 @@
                                     <input onkeyup="javascript:this.value=this.value.toUpperCase();" type="text" class="form-control" id="search" name="search" placeholder="filtrar por dni o medicamento">
                                 </div> 
                             </form>
-                        </div>    
+                        </div>
+                                        <!--Tabla de persona-->
+
                         <table class="table table-responsive table-light table-border table-hover text-center" id = "tabla">
                             <thead>
                                 <tr class="table-dark">
@@ -88,7 +91,7 @@
                                     <td>Nombre</td>
                                     <td>Apellido</td>
                                     <td>Dni</td>
-                                    <td>Edad</td>
+                                    <td>Fecha de nacimiento</td>
                                     <td>Acciones</td>
                                 </tr>
                             </thead>
@@ -96,6 +99,9 @@
     
                             </tbody>
                         </table>
+
+                        <!--Formulario ingreso de medicamento-->
+
                         <div class="col-12 text-center m-auto d-flex justify-content-center align-items-center my-3">
                             <form action="" id="updateMedicamento">
                                     <div class="card border-0">
@@ -122,6 +128,9 @@
                                 
                             </form>
                         </div>
+
+                        <!--Tabla de medicamentos -->
+
                                 <table class="table table-responsive table table-light table-border table-hover text-center" id = "tablaMedicamentos">
                                     <thead>
                                         <tr class="table-dark">
@@ -134,6 +143,9 @@
             
                                     </tbody>
                                 </table>
+
+                        <!--Formulario para ingreso de prescripcion-->
+
                         <div class="col-12 text-center m-auto d-flex justify-content-center align-items-center my-3">
                             <form action="" id="updatePrescripciones">
                                     <div class="card border-0">
@@ -159,7 +171,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class=" col-xl-12 col-ls-12 col-sm-12 justify-content-center text-center align-items-center my-2">
-                                                    <span id="ok1"></span>
+                                                    <span id="ok2"></span>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -172,6 +184,9 @@
                                 
                             </form>
                         </div>
+
+                        <!--Tabla de prescripciones-->
+
                         <table class="table table-responsive table table-light table-border table-hover text-center col-12" id = "tablaPrescripciones"">
                             <thead>
                                 <tr class="table-dark">

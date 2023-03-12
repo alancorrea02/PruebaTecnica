@@ -1,7 +1,4 @@
 <?php
-//include('Medicamentos.php');
-//include('Personas.php');
-
 use function PHPSTORM_META\type;
 include('Personas.php');
 include('Medicamentos.php');
@@ -42,7 +39,6 @@ class GenericCRUD {
         }else if($this->table=='medicamentos'){
             $this->conexion->setSql("UPDATE medicamentos SET nombre_comercial = 
             '{$this->campos->getNombre_comercial()}' WHERE id = {$this->campos->getId()};");
-            //$this->conexion->executeQuery();
             $variable = $this->conexion->executeQuery();
             return $variable;
         }else if($this->table == 'persona_medicamento'){
@@ -50,8 +46,6 @@ class GenericCRUD {
             '{$this->campos->getObservaciones()}',persona_id = {$p}, medicamento_id={$m} WHERE id = {$this->campos->getId()};");
             $variable = $this->conexion->executeSoloQuery();
             return $variable;
-        }else{
-            echo "Hola";
         }
     }
     public function CreateRecord($idP,$idM){

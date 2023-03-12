@@ -7,5 +7,7 @@
     $json = array();
     $json = $respuesta;
     $jsonString = json_encode($json);
-    echo $jsonString; 
+    echo $jsonString;
+    $desconexion = new MysqlStructure();
+    $desconexion ->closeConnection(); 
 ?>

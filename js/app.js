@@ -27,6 +27,7 @@ $("#tablaPrescripciones").hide();
 
 $("#PersonasTable").click(function(){
     $("#search").val('');
+    $('#ok2').hide();
 
     $("#updatePrescripciones").hide();
     $("#updateMedicamento").hide();
@@ -42,6 +43,7 @@ $("#PersonasTable").click(function(){
 });
 $("#medicamentosTable").click(function(){
     $("#search").val('');
+    $('#ok2').hide();
 
     $("#updatePrescripciones").hide();
     CargarTablaMedicamentos();
@@ -58,6 +60,7 @@ $("#medicamentosTable").click(function(){
 });
 $("#prescripcionesTable").click(function(){
     $("#search").val('');
+    $('#ok2').hide();
 
     $("#updatePrescripciones").hide();
     CargarTablaPrescripciones();

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 08-03-2023 a las 14:36:38
+-- Tiempo de generación: 12-03-2023 a las 09:39:13
 -- Versión del servidor: 8.0.32-0ubuntu0.22.04.2
 -- Versión de PHP: 8.1.2-1ubuntu2.11
 
@@ -39,7 +39,10 @@ CREATE TABLE `medicamentos` (
 --
 
 INSERT INTO `medicamentos` (`id`, `nombre_comercial`, `created_at`, `updated_at`) VALUES
-(1, 'Diazepam', '2023-03-04 14:09:06', NULL);
+(56, 'CLONAZEPAN', '2023-03-11 23:59:40', NULL),
+(57, 'DIAZEPAN', '2023-03-12 00:00:51', NULL),
+(59, 'DICLOFEAC', '2023-03-12 12:20:39', NULL),
+(60, 'FABAMOX', '2023-03-12 12:22:19', NULL);
 
 -- --------------------------------------------------------
 
@@ -49,7 +52,7 @@ INSERT INTO `medicamentos` (`id`, `nombre_comercial`, `created_at`, `updated_at`
 
 CREATE TABLE `personas` (
   `id` int NOT NULL,
-  `nombre` varchar(255) NOT NULL,
+  `nombre` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `apellido` varchar(255) NOT NULL,
   `dni` varchar(255) NOT NULL,
   `fecha_nacimiento` date NOT NULL,
@@ -62,9 +65,9 @@ CREATE TABLE `personas` (
 --
 
 INSERT INTO `personas` (`id`, `nombre`, `apellido`, `dni`, `fecha_nacimiento`, `created_at`, `updated_at`) VALUES
-(3, 'gharu', 'vinland', '8949', '1999-02-04', '2023-03-03 01:22:29', NULL),
-(8, 'Solaire', 'De Astora', '45435665', '1999-03-02', '2023-03-06 19:00:59', NULL),
-(9, 'Patches', 'La hiena', '657658', '1999-03-02', '2023-03-06 19:01:22', NULL);
+(78, 'ALAN', 'GARDEL', '45677', '2023-03-07', '2023-03-11 23:59:21', '2023-03-12 12:31:29'),
+(79, 'CELESTE', 'CEL', '45323', '2023-03-07', '2023-03-12 00:00:00', NULL),
+(80, 'SIGMAYER', 'DE CATARINA', '8978', '2023-03-07', '2023-03-12 00:00:42', NULL);
 
 -- --------------------------------------------------------
 
@@ -82,6 +85,16 @@ CREATE TABLE `persona_medicamento` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
+-- Volcado de datos para la tabla `persona_medicamento`
+--
+
+INSERT INTO `persona_medicamento` (`id`, `observaciones`, `persona_id`, `medicamento_id`, `created_at`, `updated_at`) VALUES
+(47, 'TOMAR CADA 8 HORAS', 78, 56, '2023-03-12 00:00:15', NULL),
+(48, 'TOMAR CADA 8', 79, 57, '2023-03-12 00:01:19', NULL),
+(50, 'TOMAR CADA 8', 78, 59, '2023-03-12 12:21:18', '2023-03-12 12:23:40'),
+(52, 'TOMAR HOY', 79, 60, '2023-03-12 12:33:54', NULL);
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -89,7 +102,8 @@ CREATE TABLE `persona_medicamento` (
 -- Indices de la tabla `medicamentos`
 --
 ALTER TABLE `medicamentos`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `nombre_comercial` (`nombre_comercial`);
 
 --
 -- Indices de la tabla `personas`
@@ -114,19 +128,19 @@ ALTER TABLE `persona_medicamento`
 -- AUTO_INCREMENT de la tabla `medicamentos`
 --
 ALTER TABLE `medicamentos`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT de la tabla `personas`
 --
 ALTER TABLE `personas`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT de la tabla `persona_medicamento`
 --
 ALTER TABLE `persona_medicamento`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- Restricciones para tablas volcadas
