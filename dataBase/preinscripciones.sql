@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 12-03-2023 a las 09:39:13
+-- Tiempo de generación: 12-03-2023 a las 21:42:24
 -- Versión del servidor: 8.0.32-0ubuntu0.22.04.2
 -- Versión de PHP: 8.1.2-1ubuntu2.11
 
@@ -65,8 +65,8 @@ CREATE TABLE `personas` (
 --
 
 INSERT INTO `personas` (`id`, `nombre`, `apellido`, `dni`, `fecha_nacimiento`, `created_at`, `updated_at`) VALUES
-(78, 'ALAN', 'GARDEL', '45677', '2023-03-07', '2023-03-11 23:59:21', '2023-03-12 12:31:29'),
-(79, 'CELESTE', 'CEL', '45323', '2023-03-07', '2023-03-12 00:00:00', NULL),
+(78, 'GOLDRICK', 'GOLAGAN', '45677', '2023-03-07', '2023-03-11 23:59:21', '2023-03-12 12:42:44'),
+(79, 'CELDRICK', 'GOLDRAN', '45323', '2023-03-07', '2023-03-12 00:00:00', '2023-03-12 12:42:17'),
 (80, 'SIGMAYER', 'DE CATARINA', '8978', '2023-03-07', '2023-03-12 00:00:42', NULL);
 
 -- --------------------------------------------------------
@@ -89,10 +89,9 @@ CREATE TABLE `persona_medicamento` (
 --
 
 INSERT INTO `persona_medicamento` (`id`, `observaciones`, `persona_id`, `medicamento_id`, `created_at`, `updated_at`) VALUES
-(47, 'TOMAR CADA 8 HORAS', 78, 56, '2023-03-12 00:00:15', NULL),
+(47, 'TOMAR CADA 8 ', 78, 56, '2023-03-12 00:00:15', '2023-03-12 12:41:34'),
 (48, 'TOMAR CADA 8', 79, 57, '2023-03-12 00:01:19', NULL),
-(50, 'TOMAR CADA 8', 78, 59, '2023-03-12 12:21:18', '2023-03-12 12:23:40'),
-(52, 'TOMAR HOY', 79, 60, '2023-03-12 12:33:54', NULL);
+(50, 'TOMAR CADA 8', 80, 59, '2023-03-12 12:21:18', '2023-03-13 00:32:34');
 
 --
 -- Índices para tablas volcadas
@@ -140,7 +139,7 @@ ALTER TABLE `personas`
 -- AUTO_INCREMENT de la tabla `persona_medicamento`
 --
 ALTER TABLE `persona_medicamento`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- Restricciones para tablas volcadas
